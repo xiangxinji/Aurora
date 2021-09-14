@@ -1,15 +1,11 @@
 <template>
   <div class="touch-bar" >
     touch bar
+    <el-button>111</el-button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
-const props = defineProps({
-
-});
 </script>
 <style lang="scss" scoped>
 .touch-bar {
