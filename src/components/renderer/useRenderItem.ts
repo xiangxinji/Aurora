@@ -14,29 +14,6 @@ export const CommonProps = {
 const pxUnit = createUnit('px');
 
 export default function useRenderItem<T>(type: string, reactiveOptions: T) {
-  function getRenderItemClass(options: BaseOptions) {
-    const { customClass } = options;
-    return mergeClass(customClass, {
-      [`render-item-${type}`]: true,
-      'render-item__hidden': options.hidden,
-    });
-  }
-
-  function getRenderOptionsToTemplate(options: BaseOptions) {
-    const result: any = {
-      label: options.label,
-      key: options.key,
-    };
-    if (options.required) result.required = options.required;
-    return result;
-  }
-
-  function getRenderItemStyle(options: BaseOptions) {
-    return {
-      width: pxUnit(options.width) || '100%',
-    };
-  }
-
   const state = reactive({
     type,
     options: reactiveOptions,
@@ -48,11 +25,32 @@ export default function useRenderItem<T>(type: string, reactiveOptions: T) {
     store.set(state);
   }
   const context = {
-    getRenderItemClass,
-    getRenderOptionsToTemplate,
-    getRenderItemStyle,
     store,
   };
 
   return [state, context] as [typeof state, typeof context];
+}
+
+export function getRenderItemClass(type: string, options: BaseOptions) {
+  const { customClass } = options;
+  return mergeClass(customClass, {
+    [`render-item-${type}`]: true,
+    'render-item__hidden': options.hidden,
+  });
+}
+
+export function getRenderOptionsToTemplate(options: BaseOptions) {
+  const result: any = {
+    label: options.label,
+    key: options.key,
+  };
+  if (options.labelWidth) result.labelWidth = options.labelWidth;
+  if (options.required) result.required = options.required;
+  return result;
+}
+
+export function getRenderItemStyle(options: BaseOptions) {
+  return {
+    width: pxUnit(options.width) || '100%',
+  };
 }

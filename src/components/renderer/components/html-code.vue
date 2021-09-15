@@ -1,8 +1,6 @@
 <template>
   <form-item :options="state.options" :type="state.type">
-    <el-input :type="state.textarea ? 'textarea' : 'input'"
-              v-model="state.defaultValue"
-              :placeholder="state.placeholder"></el-input>
+    <div v-html="state.options.htmlCode"></div>
   </form-item>
 </template>
 
@@ -10,9 +8,9 @@
 import { defineProps } from 'vue';
 import useRenderItem, { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
-import { TextOptions } from '@/components/renderer/types';
+import { HTMLCodeOptions } from '@/components/renderer/types';
 
 const props = defineProps(CommonProps);
 
-const [state] = useRenderItem<TextOptions>('text', props.options as TextOptions);
+const [state] = useRenderItem<HTMLCodeOptions>('html', props.options as HTMLCodeOptions);
 </script>

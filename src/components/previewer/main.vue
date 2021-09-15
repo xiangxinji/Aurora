@@ -1,8 +1,10 @@
 <template>
   <div class="renderer-container">
     <el-form v-bind="formBinds">
-      <component :is="conf.type" v-for="(conf,$index) in items" :key="$index"
-                 :options="conf.options"></component>
+      <div class="preview-item" v-for="(conf,$index) in items" :key="$index"
+           @click.self="handleActive(conf)">
+        <component :is="conf.type" :options="conf.options"></component>
+      </div>
     </el-form>
   </div>
 </template>
@@ -10,6 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import text from '@/components/renderer/components/text.vue';
+import htmlCode from '@/components/renderer/components/html-code.vue';
 
 function getDefaultFormOptions() {
   return {
@@ -21,6 +24,7 @@ function getDefaultFormOptions() {
 export default defineComponent({
   components: {
     text,
+    htmlCode,
   },
   props: {
     items: {
@@ -37,8 +41,17 @@ export default defineComponent({
       return this.formOptions;
     },
   },
+  methods: {
+    handleActive(conf: any) {
+      console.log(conf);
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
-
+.preview-item {
+  border: dashed 1px #efefef;
+  cursor: pointer;
+  user-select: none;
+}
 </style>
