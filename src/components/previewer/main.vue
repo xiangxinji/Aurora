@@ -1,8 +1,7 @@
 <template>
   <div class="renderer-container">
     <el-form v-bind="formBinds">
-      <div class="preview-item" v-for="(conf,$index) in items" :key="$index"
-           @click.self="handleActive(conf)">
+      <div class="preview-item" v-for="(conf,$index) in items" :key="$index">
         <component :is="conf.type" :options="conf.options"></component>
       </div>
     </el-form>
