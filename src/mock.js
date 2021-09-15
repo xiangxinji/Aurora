@@ -1,0 +1,46 @@
+module.exports = [
+  {
+    type: 'text',
+    icon: 'xxx',
+    options: {
+      key: '',
+      label: '文本',
+      width: '',
+      labelWidth: 'auto',
+      hidden: false,
+      placeholder: '你好1 ',
+      defaultValue: '',
+      customClass: '',
+      required: true,
+    },
+  },
+  {
+    type: 'text',
+    icon: 'xxx',
+    options: {
+      key: '',
+      label: '文本',
+      width: '50%',
+      labelWidth: '30px',
+      hidden: true,
+      placeholder: '2222',
+      defaultValue: '3333',
+      customClass: '',
+    },
+  },
+  {
+    type: 'text',
+    icon: 'xxx',
+    options: {
+      key: '',
+      label: '文本',
+      width: '50%',
+      labelWidth: '30px',
+      hidden: true,
+      placeholder: '2222',
+      defaultValue: '3333',
+      customClass: '',
+      textarea: true,
+    },
+  },
+];

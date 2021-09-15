@@ -1,12 +1,26 @@
 <template>
-  <div class="screen"> screen </div>
+  <div class="screen">
+    <previewer :items="configure"></previewer>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { defineProps } from 'vue';
+import previewer from '@/components/previewer/main.vue';
 
+const props = defineProps({
+  configure: {
+    type: Array,
+    default() {
+      return [];
+    },
+  },
+});
 </script>
 <style lang="scss" scoped>
-.screen{
-  height:100%;
+.screen {
+  height: 100%;
+  box-sizing: border-box;
+  padding:10px;
 }
 </style>
