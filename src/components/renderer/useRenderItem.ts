@@ -1,6 +1,9 @@
-import { defineProps, isReactive, reactive } from 'vue';
+import {
+  reactive, inject,
+} from 'vue';
 import { createUnit, mergeClass } from '@/utils/helpers';
 import { BaseOptions } from '@/components/renderer/types';
+import Store from '@/components/context/store';
 
 export const CommonProps = {
   options: {
@@ -8,9 +11,9 @@ export const CommonProps = {
   },
 };
 
-export default function useRenderItem(type: string, reactiveOptions: any) {
-  const pxUnit = createUnit('px');
+const pxUnit = createUnit('px');
 
+export default function useRenderItem<T>(type: string, reactiveOptions: T) {
   function getRenderItemClass(options: BaseOptions) {
     const { customClass } = options;
     return mergeClass(customClass, {
@@ -34,11 +37,22 @@ export default function useRenderItem(type: string, reactiveOptions: any) {
     };
   }
 
-  const state = isReactive(reactiveOptions) ? reactiveOptions : reactive(reactiveOptions);
+  const state = reactive({
+    type,
+    options: reactiveOptions,
+  });
 
-  return [state, {
+  const store = inject('RenderStore');
+
+  if (store instanceof Store) {
+    store.set(state);
+  }
+  const context = {
     getRenderItemClass,
     getRenderOptionsToTemplate,
     getRenderItemStyle,
-  }];
+    store,
+  };
+
+  return [state, context] as [typeof state, typeof context];
 }

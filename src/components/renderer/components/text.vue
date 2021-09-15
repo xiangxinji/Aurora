@@ -1,8 +1,9 @@
 <template>
-  <el-form-item v-bind="getRenderOptionsToTemplate(options)" label-width="100px"
-                :class="getRenderItemClass(options)" :style="getRenderItemStyle(options)">
+  <el-form-item v-bind="getRenderOptionsToTemplate(state.options)" label-width="100px"
+                :class="getRenderItemClass(state.options)"
+                :style="getRenderItemStyle(state.options)">
     <el-input :type="state.textarea ? 'textarea' : 'input'"
-                v-model="state.defaultValue"
+              v-model="state.defaultValue"
               :placeholder="state.placeholder"></el-input>
   </el-form-item>
 </template>
@@ -18,4 +19,5 @@ const [state, {
   getRenderOptionsToTemplate,
   getRenderItemStyle,
 }] = useRenderItem('text', props.options);
+console.log(state);
 </script>
