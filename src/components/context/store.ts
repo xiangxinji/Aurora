@@ -1,20 +1,41 @@
-export default class Store<T> {
-  private data: Array<T> = [];
+/* eslint-disable @typescript-eslint/ban-types */
+import { reactive } from 'vue';
+import Event from '@/utils/event';
 
-  public set(item: T) {
-    this.data.push(item);
+export default class Store<T extends { id: number | string }> extends Event {
+  public data: Array<T> = reactive([]);
+
+  private nextId = 0;
+
+  public current?: T;
+
+  public set(item: T | Array<T>) {
+    const r: T[] = Array.isArray(item) ? item : [item];
+    r.forEach((i) => {
+      i.id = this.nextId++;
+      this.data.push(i);
+    });
   }
 
-  public remove(item: T) {
-    const i = this.data.indexOf(item);
-    if (i > -1) this.data.splice(i, 1);
+  public remove(id: string | number) {
+    const i = this.data.findIndex((item) => item.id === id);
+    if (i > -1) {
+      if (this.data[i] === this.current) {
+        this.setCurrent();
+      }
+      this.data.splice(i, 1);
+    }
   }
 
   public get(i: number) {
     return this.data[i];
   }
 
-  public getData() {
-    return this.data;
+  public setCurrent(t ?: T) {
+    if (!t) {
+      this.current = undefined;
+    } else if (this.data.indexOf(t) === -1) return;
+    this.current = t;
+    this.emit('current-change', this.current);
   }
 }

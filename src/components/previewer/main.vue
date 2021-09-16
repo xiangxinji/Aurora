@@ -1,56 +1,43 @@
 <template>
   <div class="renderer-container">
     <el-form v-bind="formBinds">
-      <div class="preview-item" v-for="(conf,$index) in items" :key="$index">
-        <component :is="conf.type" :options="conf.options"></component>
-      </div>
+      <preview-item v-for="(conf) in data"
+                    :key="conf.id" :conf="conf"
+                    @active="handleActive"></preview-item>
     </el-form>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import text from '@/components/renderer/components/text.vue';
-import htmlCode from '@/components/renderer/components/html-code.vue';
+<script setup lang="ts">
+import {
+  computed, inject, defineProps, reactive,
+} from 'vue';
+import previewItem from './preview-item.vue';
+import Store from '@/components/context/store';
 
-function getDefaultFormOptions() {
-  return {
-    labelWidth: '100px',
-    size: 'mini',
-  };
-}
-
-export default defineComponent({
-  components: {
-    text,
-    htmlCode,
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
   },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-    formOptions: {
-      type: Object,
-      default: getDefaultFormOptions,
-    },
-  },
-  computed: {
-    formBinds() {
-      return this.formOptions;
-    },
-  },
-  methods: {
-    handleActive(conf: any) {
-      console.log(conf);
-    },
+  formOptions: {
+    type: Object,
+    default: () => ({
+      labelWidth: '100px',
+      size: 'mini',
+    }),
   },
 });
-</script>
-<style lang="scss" scoped>
-.preview-item {
-  border: dashed 1px #efefef;
-  cursor: pointer;
-  user-select: none;
+
+const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
+RenderStore.set(props.items);
+const data = computed(() => RenderStore.data);
+const formBinds = computed(() => props.formOptions);
+
+function handleActive(conf: any) {
+  if (RenderStore) {
+    RenderStore.setCurrent(conf);
+  }
 }
-</style>
+
+</script>

@@ -1,35 +1,21 @@
 import {
-  reactive, inject,
+  reactive, inject, defineEmits,
 } from 'vue';
 import { createUnit, mergeClass } from '@/utils/helpers';
 import { BaseOptions } from '@/components/renderer/types';
 import Store from '@/components/context/store';
 
+const i = 0;
 export const CommonProps = {
   options: {
     type: Object,
   },
+  onInitState: {
+    type: Function,
+  },
 };
 
 const pxUnit = createUnit('px');
-
-export default function useRenderItem<T>(type: string, reactiveOptions: T) {
-  const state = reactive({
-    type,
-    options: reactiveOptions,
-  });
-
-  const store = inject('RenderStore');
-
-  if (store instanceof Store) {
-    store.set(state);
-  }
-  const context = {
-    store,
-  };
-
-  return [state, context] as [typeof state, typeof context];
-}
 
 export function getRenderItemClass(type: string, options: BaseOptions) {
   const { customClass } = options;

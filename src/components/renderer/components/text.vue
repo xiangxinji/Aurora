@@ -1,18 +1,17 @@
 <template>
-  <form-item :options="state.options" :type="state.type">
-    <el-input :type="state.textarea ? 'textarea' : 'input'"
-              v-model="state.defaultValue"
-              :placeholder="state.placeholder"></el-input>
+  <form-item :options="options" :type="type">
+    <el-input :type="textarea ? 'textarea' : 'input'"
+              v-model="options.defaultValue"
+              :placeholder="options.placeholder"></el-input>
   </form-item>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import useRenderItem, { CommonProps } from '../useRenderItem';
+import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
 import { TextOptions } from '@/components/renderer/types';
 
 const props = defineProps(CommonProps);
 
-const [state] = useRenderItem<TextOptions>('text', props.options as TextOptions);
 </script>

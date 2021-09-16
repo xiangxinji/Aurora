@@ -8,7 +8,4 @@ import Store from './store';
 
 const store = new Store<any>();
 provide('RenderStore', store);
-setTimeout(() => {
-  store.get(2).options.label = 111;
-}, 3000);
 </script>
