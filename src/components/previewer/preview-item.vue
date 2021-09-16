@@ -6,7 +6,10 @@
       </el-icon>
     </div>
     <div class="operations">
-      <el-icon @click.stop="handleDelete">
+      <el-icon :size="22" @click.stop="handleAppendCopy">
+        <copy-document/>
+      </el-icon>
+      <el-icon :size="22" @click.stop="handleDelete">
         <delete-filled/>
       </el-icon>
     </div>
@@ -16,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, reactive } from 'vue';
-import { Rank, DeleteFilled } from '@element-plus/icons';
+import { Rank, DeleteFilled, CopyDocument } from '@element-plus/icons';
 import text from '@/components/renderer/components/text.vue';
 import htmlCode from '@/components/renderer/components/html-code.vue';
 import Store from '@/components/context/store';
@@ -49,6 +52,7 @@ export default defineComponent({
     htmlCode,
     Rank,
     DeleteFilled,
+    CopyDocument,
   },
   methods: {
     handleFocus(event: MouseEvent) {
@@ -59,6 +63,12 @@ export default defineComponent({
     handleBlur,
     handleDelete(this: any) {
       if (this.RenderStore) this.RenderStore.remove(this.state.id);
+    },
+    handleAppendCopy(this: any) {
+      if (this.RenderStore) {
+        const i = this.RenderStore.indexOf(this.state.id);
+        this.RenderStore.set(JSON.parse(JSON.stringify(this.state)), i + 1);
+      }
     },
   },
 });
@@ -93,6 +103,10 @@ export default defineComponent({
     right: 0;
     bottom: 0;
     padding: 0 8px;
+
+    .el-icon:not(:last-child) {
+      margin-right: 4px;
+    }
   }
 }
 

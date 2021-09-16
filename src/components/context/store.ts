@@ -9,11 +9,15 @@ export default class Store<T extends { id: number | string }> extends Event {
 
   public current?: T;
 
-  public set(item: T | Array<T>) {
+  public set(item: T | Array<T>, appendIndex ?: number) {
     const r: T[] = Array.isArray(item) ? item : [item];
     r.forEach((i) => {
       i.id = this.nextId++;
-      this.data.push(i);
+      if (appendIndex) {
+        this.data.splice(appendIndex, 0, i);
+      } else {
+        this.data.push(i);
+      }
     });
   }
 
@@ -37,5 +41,9 @@ export default class Store<T extends { id: number | string }> extends Event {
     } else if (this.data.indexOf(t) === -1) return;
     this.current = t;
     this.emit('current-change', this.current);
+  }
+
+  public indexOf(id: string | number) {
+    return this.data.findIndex((i) => i.id === id);
   }
 }
