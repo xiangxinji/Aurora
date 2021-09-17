@@ -1,9 +1,13 @@
 <template>
   <div class="renderer-container">
     <el-form v-bind="formBinds">
-      <preview-item v-for="(conf) in data"
-                    :key="conf.id" :conf="conf"
-                    @active="handleActive"></preview-item>
+      <draggable :list="data" item-key="id" handle=".active-dragger">
+        <template #item="{ element }">
+          <preview-item :conf="element"
+                        @active="handleActive"></preview-item>
+        </template>
+      </draggable>
+
     </el-form>
   </div>
 </template>
@@ -31,7 +35,7 @@ const props = defineProps({
 
 const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
 RenderStore.set(props.items);
-const data = computed(() => RenderStore.data);
+const { data } = RenderStore;
 const formBinds = computed(() => props.formOptions);
 
 function handleActive(conf: any) {
