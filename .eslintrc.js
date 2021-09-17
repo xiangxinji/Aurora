@@ -17,6 +17,7 @@ module.exports = {
     'no-plusplus': 'off',
     '@typescript-eslint/ban-types': 'off',
     'no-param-reassign': 'off',
+    'no-shadow': 'off',
   },
   overrides: [
     {

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <context>
-        <touch-bar style="width:200px;"></touch-bar>
+        <touch-bar style="width:250px;"></touch-bar>
         <screen style="flex:1;" :configure="mock"></screen>
         <options-bar style="width:250px;"></options-bar>
       </context>

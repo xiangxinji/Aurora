@@ -6,10 +6,10 @@
       </el-icon>
     </div>
     <div class="operations">
-      <el-icon :size="22" @click.stop="handleAppendCopy">
+      <el-icon :size="16" @click.stop="handleAppendCopy">
         <copy-document/>
       </el-icon>
-      <el-icon :size="22" @click.stop="handleDelete">
+      <el-icon :size="16" @click.stop="handleDelete">
         <delete-filled/>
       </el-icon>
     </div>
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, inject, reactive } from 'vue';
 import { Rank, DeleteFilled, CopyDocument } from '@element-plus/icons';
-import text from '@/components/renderer/components/text.vue';
+import textInput from '@/components/renderer/components/input.vue';
 import htmlCode from '@/components/renderer/components/html-code.vue';
 import Store from '@/components/context/store';
 
@@ -48,7 +48,7 @@ export default defineComponent({
     };
   },
   components: {
-    text,
+    textInput,
     htmlCode,
     Rank,
     DeleteFilled,
@@ -70,6 +70,8 @@ export default defineComponent({
         this.RenderStore.set(JSON.parse(JSON.stringify(this.state)), i + 1);
       }
     },
+  },
+  mounted() {
   },
 });
 </script>
@@ -106,6 +108,10 @@ export default defineComponent({
 
     .el-icon:not(:last-child) {
       margin-right: 4px;
+    }
+
+    .el-icon {
+      margin-top: 3px;
     }
   }
 }

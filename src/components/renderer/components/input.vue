@@ -1,6 +1,6 @@
 <template>
   <form-item :options="options" :type="type">
-    <el-input :type="textarea ? 'textarea' : 'input'"
+    <el-input :type="options.textarea ? 'textarea' : 'input'"
               v-model="options.defaultValue"
               :placeholder="options.placeholder"></el-input>
   </form-item>
