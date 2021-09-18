@@ -2,7 +2,7 @@
   <div class="renderer-container">
     <el-form v-bind="formBinds">
       <draggable :list="data" item-key="id" handle=".active-dragger"
-                 :group="{ name :'preview', put : 'touch'}" :animation="150">
+                 :group="{ name :'preview', put : 'touch'}" :animation="300">
         <template #item="{ element }">
           <preview-item :conf="element"
                         @active="handleActive"></preview-item>
@@ -47,11 +47,11 @@ function handleActive(conf: any) {
 </script>
 
 <style scoped lang="scss">
-::v-deep(.sortable-ghost){
+::v-deep(.sortable-ghost) {
   background-color: #409EFF;
-  height:0;
+  height: 0;
   overflow: hidden;
-  padding:0;
-  border-top:solid 10px #409EFF;
+  padding: 0;
+  border-top: solid 10px #409EFF;
 }
 </style>
