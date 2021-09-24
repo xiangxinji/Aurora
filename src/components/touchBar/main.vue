@@ -6,7 +6,7 @@
         <div class="touch-group-children">
           <draggable :list="group.children" :sort="false"
                      :group="{ name : 'touch' , pull : 'clone' , put : false }" item-key="label"
-                     :clone="onClone">
+                     :clone="onClone" style="display: flex;flex-wrap: wrap;justify-content: space-between;">
             <template #item="{ element }">
               <div class="touch-group-item" :data-handler-key="element.handleKey">
                 <div class="icon">
@@ -71,7 +71,9 @@ function onClone(item: SettingItem) {
     cursor: pointer;
     margin-bottom: 10px;
     user-select: none;
-
+    width:48%;
+    white-space: nowrap;
+    box-sizing: border-box;
     .label {
       margin-left: 8px;
     }
