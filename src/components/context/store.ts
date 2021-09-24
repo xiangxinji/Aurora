@@ -7,7 +7,7 @@ export default class Store<T extends { id: number | string }> extends Event {
 
   private nextId = 0;
 
-  public current?: T;
+  public current ?: T;
 
   public set(item: T | Array<T>, appendIndex ?: number) {
     const r: T[] = Array.isArray(item) ? item : [item];
@@ -21,13 +21,22 @@ export default class Store<T extends { id: number | string }> extends Event {
     });
   }
 
-  public remove(id: string | number) {
-    const i = this.data.findIndex((item) => item.id === id);
+  public append(item: T, parentNodes: any) {
+    const data = parentNodes || this.data;
+    if (!Array.isArray(data)) return;
+    item.id = this.nextId++;
+    data.push(item);
+  }
+
+  public remove(id: string | number, parentNodes ?: any) {
+    const data: any = parentNodes || this.data;
+    const i = data.findIndex((item: any) => item.id === id);
+    if (!Array.isArray(data)) return;
     if (i > -1) {
-      if (this.data[i] === this.current) {
+      if (data[i] === this.current) {
         this.setCurrent();
       }
-      this.data.splice(i, 1);
+      data.splice(i, 1);
     }
   }
 
@@ -36,9 +45,6 @@ export default class Store<T extends { id: number | string }> extends Event {
   }
 
   public setCurrent(t ?: T) {
-    if (!t) {
-      this.current = undefined;
-    } else if (this.data.indexOf(t) === -1) return;
     this.current = t;
     this.emit('current-change', this.current);
   }

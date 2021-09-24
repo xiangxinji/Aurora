@@ -1,12 +1,10 @@
 <template>
   <div class="renderer-container">
     <el-form v-bind="formBinds">
-      <draggable :list="data" item-key="id" handle=".active-dragger"
-                 :group="{ name :'preview', put : 'touch'}" :animation="300">
+      <draggable :list="data" item-key="id" handle=".active-draggier"
+                 :group="{ name :'preview', put : ['touch' , 'layout']}" :animation="300">
         <template #item="{ element }">
-          <preview-layout-item v-if="element?.options?.layout" :conf="element"
-                               @active="handleActive"></preview-layout-item>
-          <preview-item v-else :conf="element" @active="handleActive"></preview-item>
+          <item-entry :element="element"></item-entry>
         </template>
       </draggable>
     </el-form>
@@ -15,10 +13,10 @@
 
 <script setup lang="ts">
 import {
-  computed, inject, defineProps, reactive,
+  computed, inject, defineProps, provide, reactive,
 } from 'vue';
-import previewItem from './item.vue';
-import previewLayoutItem from './layout-item.vue';
+import itemEntry from './items/entry.vue';
+
 import Store from '@/components/context/store';
 
 const props = defineProps({
@@ -39,13 +37,6 @@ const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
 RenderStore.set(props.items);
 const { data } = RenderStore;
 const formBinds = computed(() => props.formOptions);
-
-function handleActive(conf: any) {
-  if (RenderStore) {
-    RenderStore.setCurrent(conf);
-  }
-}
-
 </script>
 
 <style scoped lang="scss">

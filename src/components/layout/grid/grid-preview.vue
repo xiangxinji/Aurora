@@ -4,9 +4,9 @@
     <el-col v-for="i in options.columns.length" :key="i"
             :span="getColumnSpan(options , i)">
       <draggable :list="options.columns[i-1].children"
-                 :group="{ name :['preview' , 'layout'] , put : ['touch' , 'preview']}">
+                 :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}">
         <template #item="{ element }">
-          <preview-item :conf="element"></preview-item>
+          <item-entry :element="element" :parent-nodes="options.columns[i-1].children"></item-entry>
         </template>
       </draggable>
     </el-col>
@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { PropType, defineProps } from 'vue';
 import { BaseOptions } from '@/components/renderer/types';
-import PreviewItem from '@/components/previewer/item.vue';
+import itemEntry from '@/components/previewer/items/entry.vue';
 import {
   getRenderItemStyle,
   getRenderItemClass,

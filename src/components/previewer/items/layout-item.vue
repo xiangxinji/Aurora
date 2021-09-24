@@ -1,6 +1,6 @@
 <template>
-  <div class="preview-item" @click.capture="handleFocus" v-click-outside="handleBlur">
-    <div class="active-dragger">
+  <div :class="{ 'preview-item' : true , 'preview-active' : active }" @click.stop="handleFocus">
+    <div class="active-draggier">
       <el-icon>
         <rank/>
       </el-icon>
@@ -13,46 +13,48 @@
         <delete-filled/>
       </el-icon>
     </div>
-    <component :is="state.type" :type="state.type" :options="state.options"></component>
+    <component v-if="state" :is="state.type" :type="state.type"
+               :options="state.options"></component>
   </div>
 </template>
 
 <script lang="ts">
 import { Rank, DeleteFilled, CopyDocument } from '@element-plus/icons';
-import textInput from '@/components/renderer/components/input.vue';
-import htmlCode from '@/components/renderer/components/html-code.vue';
-import usePreviewItem from './usePreviewItem';
+import GridBlock from '@/components/layout/grid/grid-preview.vue';
+import usePreviewItem from '../usePreviewItem';
 
-const component = usePreviewItem('preview-item', {
-  textInput,
-  htmlCode,
+const component = usePreviewItem('layout-item', {
   Rank,
   DeleteFilled,
   CopyDocument,
+  GridBlock,
 });
 export default component;
 </script>
 <style lang="scss" scoped>
+
+$primary-color: orange;
 .preview-item {
   border: dashed 2px #efefef;
   cursor: pointer;
   user-select: none;
   position: relative;
   padding: 15px 0;
+  box-sizing: border-box;
 
   &:hover {
-    border-color: #409EFF;
+    border-color: $primary-color;
   }
 
-  .active-dragger, .operations {
+  .active-draggier, .operations {
     display: none;
     position: absolute;
-    background-color: #409EFF;
+    background-color: $primary-color;
     color: white;
     padding: 0 5px;
   }
 
-  .active-dragger {
+  .active-draggier {
     left: 0;
     top: 0;
   }
@@ -74,9 +76,9 @@ export default component;
 }
 
 .preview-active {
-  border: solid 2px #409EFF;
+  border: solid 2px $primary-color;
 
-  .active-dragger, .operations {
+  .active-draggier, .operations {
     display: block;
   }
 }
