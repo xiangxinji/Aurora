@@ -4,8 +4,9 @@
       <draggable :list="data" item-key="id" handle=".active-dragger"
                  :group="{ name :'preview', put : 'touch'}" :animation="300">
         <template #item="{ element }">
-          <preview-item :conf="element"
-                        @active="handleActive"></preview-item>
+          <preview-layout-item v-if="element?.options?.layout" :conf="element"
+                               @active="handleActive"></preview-layout-item>
+          <preview-item v-else :conf="element" @active="handleActive"></preview-item>
         </template>
       </draggable>
     </el-form>
@@ -16,7 +17,8 @@
 import {
   computed, inject, defineProps, reactive,
 } from 'vue';
-import previewItem from './preview-item.vue';
+import previewItem from './item.vue';
+import previewLayoutItem from './layout-item.vue';
 import Store from '@/components/context/store';
 
 const props = defineProps({

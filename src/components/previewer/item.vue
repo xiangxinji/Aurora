@@ -13,67 +13,24 @@
         <delete-filled/>
       </el-icon>
     </div>
-    <component :is="state.type" :options="state.options"></component>
+    <component :is="state.type" :type="state.type" :options="state.options"></component>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive } from 'vue';
 import { Rank, DeleteFilled, CopyDocument } from '@element-plus/icons';
 import textInput from '@/components/renderer/components/input.vue';
 import htmlCode from '@/components/renderer/components/html-code.vue';
-import Store from '@/components/context/store';
+import usePreviewItem from './usePreviewItem';
 
-const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
-
-function handleBlur(target: HTMLElement) {
-  target.classList.remove('preview-active');
-}
-
-export default defineComponent({
-  inject: ['RenderStore'],
-  props: {
-    conf: {
-      type: Object,
-      required: true,
-    },
-    current: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      state: this.conf,
-    };
-  },
-  components: {
-    textInput,
-    htmlCode,
-    Rank,
-    DeleteFilled,
-    CopyDocument,
-  },
-  methods: {
-    handleFocus(event: MouseEvent) {
-      const target = event.currentTarget as HTMLElement;
-      target.classList.add('preview-active');
-      this.$emit('active', this.state);
-    },
-    handleBlur,
-    handleDelete(this: any) {
-      if (this.RenderStore) this.RenderStore.remove(this.state.id);
-    },
-    handleAppendCopy(this: any) {
-      if (this.RenderStore) {
-        const i = this.RenderStore.indexOf(this.state.id);
-        this.RenderStore.set(JSON.parse(JSON.stringify(this.state)), i + 1);
-      }
-    },
-  },
-  mounted() {
-  },
+const component = usePreviewItem('preview-item', {
+  textInput,
+  htmlCode,
+  Rank,
+  DeleteFilled,
+  CopyDocument,
 });
+export default component;
 </script>
 <style lang="scss" scoped>
 .preview-item {

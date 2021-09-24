@@ -30,6 +30,11 @@ export default [
         icon: '',
         handleKey: 'html-code',
       },
+      {
+        label: '栅格布局',
+        icon: '',
+        handleKey: 'grid-block',
+      },
     ],
   },
   {

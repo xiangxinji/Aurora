@@ -18,7 +18,6 @@ import {
 const props = defineProps({
   options: {
     type: Object as PropType<BaseOptions>,
-
   },
   type: {
     type: String,

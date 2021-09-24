@@ -26,6 +26,20 @@ defaults.set(GeneratorTypes['html-code'], {
   htmlCode: '<span style="color:red;">111</span>',
 });
 
+defaults.set(GeneratorTypes['grid-block'], {
+  key: '',
+  hidden: false,
+  customClass: '',
+  columns: [{
+    span: 12,
+    children: [],
+  }, {
+    span: 12,
+    children: [],
+  }],
+  layout: true,
+});
+
 export function createDefaultOptions(handleKey: GeneratorType) {
   const t = defaults.get(handleKey);
   if (t) {
