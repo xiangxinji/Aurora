@@ -39,7 +39,6 @@ $primary-color: orange;
   cursor: pointer;
   user-select: none;
   position: relative;
-  padding: 15px 0;
   box-sizing: border-box;
 
   &:hover {
@@ -68,18 +67,18 @@ $primary-color: orange;
     .el-icon:not(:last-child) {
       margin-right: 4px;
     }
-
     .el-icon {
       margin-top: 3px;
     }
   }
 }
 
-.preview-active {
+.preview-item.preview-active {
   border: solid 2px $primary-color;
-
-  .active-draggier, .operations {
-    display: block;
-  }
 }
+
+.preview-item.preview-active > .active-draggier, .preview-item.preview-active > .operations {
+  display: block;
+}
+
 </style>

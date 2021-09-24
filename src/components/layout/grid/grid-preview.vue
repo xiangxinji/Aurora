@@ -4,7 +4,8 @@
     <el-col v-for="i in options.columns.length" :key="i"
             :span="getColumnSpan(options , i)">
       <draggable :list="options.columns[i-1].children"
-                 :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}">
+                 :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}"
+                 :animation="300">
         <template #item="{ element }">
           <item-entry :element="element" :parent-nodes="options.columns[i-1].children"></item-entry>
         </template>
@@ -32,7 +33,7 @@ const props = defineProps({
   },
 });
 
-function getColumnSpan(options, number) {
+function getColumnSpan(options: any, number: number) {
   if (options.columns[number - 1] && options.columns[number - 1].span) return options.columns[number - 1].span;
   return 24 / options.columns.length;
 }

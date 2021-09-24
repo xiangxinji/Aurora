@@ -39,7 +39,6 @@ export default component;
   cursor: pointer;
   user-select: none;
   position: relative;
-  padding: 15px 0;
 
   &:hover {
     border-color: #409EFF;
@@ -76,7 +75,7 @@ export default component;
 
 .preview-active {
   border: solid 2px #409EFF;
-  .active-draggier, .operations {
+  > .active-draggier, > .operations {
     display: block;
   }
 }

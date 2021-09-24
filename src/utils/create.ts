@@ -31,10 +31,7 @@ defaults.set(GeneratorTypes['grid-block'], {
   hidden: false,
   customClass: '',
   columns: [{
-    span: 12,
-    children: [],
-  }, {
-    span: 12,
+    span: 24,
     children: [],
   }],
   layout: true,
