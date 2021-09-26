@@ -33,52 +33,7 @@ export default component;
 </script>
 <style lang="scss" scoped>
 
-$primary-color: orange;
-.preview-item {
-  border: dashed 2px #efefef;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  box-sizing: border-box;
+@import "./styles";
 
-  &:hover {
-    border-color: $primary-color;
-  }
-
-  .active-draggier, .operations {
-    display: none;
-    position: absolute;
-    background-color: $primary-color;
-    color: white;
-    padding: 0 5px;
-  }
-
-  .active-draggier {
-    left: 0;
-    top: 0;
-  }
-
-  .operations {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding: 0 8px;
-
-    .el-icon:not(:last-child) {
-      margin-right: 4px;
-    }
-    .el-icon {
-      margin-top: 3px;
-    }
-  }
-}
-
-.preview-item.preview-active {
-  border: solid 2px $primary-color;
-}
-
-.preview-item.preview-active > .active-draggier, .preview-item.preview-active > .operations {
-  display: block;
-}
-
+@include preview-item(orange, white)
 </style>

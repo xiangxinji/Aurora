@@ -18,7 +18,8 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     'no-param-reassign': 'off',
     'no-shadow': 'off',
-    'max-len' : 'off'
+    'max-len' : 'off',
+    '@typescript-eslint/ban-ts-comment' : 'off'
   },
   overrides: [
     {

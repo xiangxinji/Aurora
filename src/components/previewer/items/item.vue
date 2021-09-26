@@ -34,49 +34,6 @@ const component = usePreviewItem('preview-item', {
 export default component;
 </script>
 <style lang="scss" scoped>
-.preview-item {
-  border: dashed 2px #efefef;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-
-  &:hover {
-    border-color: #409EFF;
-  }
-
-  .active-draggier, .operations {
-    display: none;
-    position: absolute;
-    background-color: #409EFF;
-    color: white;
-    padding: 0 5px;
-  }
-
-  .active-draggier {
-    left: 0;
-    top: 0;
-  }
-
-  .operations {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding: 0 8px;
-
-    .el-icon:not(:last-child) {
-      margin-right: 4px;
-    }
-
-    .el-icon {
-      margin-top: 3px;
-    }
-  }
-}
-
-.preview-active {
-  border: solid 2px #409EFF;
-  > .active-draggier, > .operations {
-    display: block;
-  }
-}
+@import "./styles";
+@include preview-item(#409EFF, white)
 </style>

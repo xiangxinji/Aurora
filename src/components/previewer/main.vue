@@ -34,9 +34,10 @@ const props = defineProps({
 });
 
 const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
-RenderStore.set(props.items);
+// eslint-disable-next-line no-unused-expressions
+RenderStore?.set(props.items);
 const { data } = RenderStore;
-const formBinds = computed(() => props.formOptions);
+const formBinds = computed(() => RenderStore?.formOptions);
 </script>
 
 <style scoped lang="scss">

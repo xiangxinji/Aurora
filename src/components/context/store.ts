@@ -2,12 +2,26 @@
 import { reactive } from 'vue';
 import Event from '@/utils/event';
 
+export type FormOptions = {
+  labelPosition: 'right' | 'left' | 'top',
+  labelWidth: string,
+  labelSuffix: string,
+  size: 'small' | 'mini' | 'middle'
+}
+
 export default class Store<T extends { id: number | string }> extends Event {
   public data: Array<T> = reactive([]);
 
   private nextId = 0;
 
   public current ?: T;
+
+  public formOptions = reactive({
+    labelPosition: 'right',
+    labelWidth: '100px',
+    labelSuffix: ':',
+    size: 'small',
+  });
 
   public set(item: T | Array<T>, appendIndex ?: number) {
     const r: T[] = Array.isArray(item) ? item : [item];

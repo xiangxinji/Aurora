@@ -1,0 +1,49 @@
+
+
+@mixin preview-item ( $primary-color , $secondary-color ) {
+  .preview-item {
+    border: dashed 1px #efefef;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    &:hover {
+      border-color: $primary-color;
+    }
+    .active-draggier, .operations {
+      display: none;
+      position: absolute;
+      background-color: $primary-color;
+      color: $secondary-color;
+      padding: 0 5px;
+    }
+
+    .active-draggier {
+      left: 0;
+      top: 0;
+    }
+
+    .operations {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 0 8px;
+      z-index: 999;
+
+      .el-icon:not(:last-child) {
+        margin-right: 4px;
+      }
+
+      .el-icon {
+        margin-top: 3px;
+      }
+    }
+  }
+
+  .preview-active {
+    border-color: $primary-color;
+
+    > .active-draggier, > .operations {
+      display: block;
+    }
+  }
+}
