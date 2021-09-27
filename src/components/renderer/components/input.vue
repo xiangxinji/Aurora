@@ -10,7 +10,7 @@
 import { defineProps } from 'vue';
 import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
-import { TextOptions } from '@/components/renderer/types';
+import { TextOptions } from '@/type/component';
 
 const props = defineProps(CommonProps);
 

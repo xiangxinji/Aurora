@@ -1,7 +1,8 @@
 <template>
   <div class="renderer-container">
-    <el-form v-bind="formBinds">
+    <el-form v-bind="formBinds" style="height:100%;">
       <draggable :list="data" item-key="id" handle=".active-draggier"
+                 style="height:100%;overflow-y: scroll;"
                  :group="{ name :'preview', put : ['touch' , 'layout']}" :animation="300">
         <template #item="{ element }">
           <item-entry :element="element"></item-entry>
@@ -52,9 +53,12 @@ const formBinds = computed(() => ({
   padding: 0;
   border-top: solid 10px #409EFF;
 }
-.renderer-container{
+
+.renderer-container {
   display: flex;
   justify-content: center;
   padding-top: 8px;
+  border:solid 1px #efefef;
+  height:calc(100vh - 90px);
 }
 </style>

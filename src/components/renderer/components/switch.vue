@@ -8,7 +8,7 @@
 import { defineProps } from 'vue';
 import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
-import { SwitchOptions } from '@/components/renderer/types';
+import { SwitchOptions } from '@/type/component';
 
 const props = defineProps(CommonProps);
 const op = props.options as SwitchOptions;

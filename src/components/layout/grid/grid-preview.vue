@@ -6,6 +6,7 @@
       <draggable :list="options.columns[i-1].children"
                  :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}"
                  :item-key="item => item.options.key"
+                 style="height:100%;"
                  :animation="300" >
         <template #item="{ element }">
           <item-entry :element="element" :parent-nodes="options.columns[i-1].children"></item-entry>
