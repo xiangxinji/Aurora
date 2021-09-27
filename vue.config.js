@@ -1,4 +1,5 @@
 module.exports = {
   lintOnSave: false,
-  outputDir: 'doc',
+  outputDir: 'docs',
+  productionSourceMap: false,
 };
