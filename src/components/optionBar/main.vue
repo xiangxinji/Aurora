@@ -1,7 +1,15 @@
 <template>
   <div class="options-bar">
     <el-tabs>
-      <el-tab-pane label="组件属性">Component</el-tab-pane>
+      <el-tab-pane label="组件属性">
+        <el-form size="mini" label-width="70px" style="padding-top:10px;">
+          <empty v-if="!state.current"></empty>
+          <common-field v-if="!state.current?.options.layout && comp !== 'empty'"
+                        :options="state.current.options" @change-field="handleChangeField">
+            <component :is="comp" :options="state.current.options"></component>
+          </common-field>
+        </el-form>
+      </el-tab-pane>
       <el-tab-pane label="表单属性">
         <form-option :options="state.formOptions" @change-option="handleChangeOption"></form-option>
       </el-tab-pane>
@@ -10,18 +18,26 @@
 </template>
 
 <script lang="ts">
-import { inject, reactive, defineComponent } from 'vue';
+import {
+  inject, reactive, defineComponent, computed,
+} from 'vue';
 import Store, { FormOptions } from '@/components/context/store';
 import FormOption from './components/form.vue';
+import htmlCode from './components/html-code.vue';
+import empty from './components/base/empty.vue';
+import commonField from './components/base/common-field.vue';
 
 export default defineComponent({
   components: {
     FormOption,
+    htmlCode,
+    commonField,
+    empty,
   },
   setup() {
     const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
     const state = reactive({
-      current: null,
+      current: null as any,
       formOptions: RenderStore?.formOptions,
     });
     // eslint-disable-next-line no-unused-expressions
@@ -29,15 +45,25 @@ export default defineComponent({
       state.current = current;
     });
 
+    const comp = computed(() => (state.current && state.current.type) || 'empty');
+
     function handleChangeOption(key: keyof FormOptions, value: any) {
       if (RenderStore) {
         RenderStore.formOptions[key] = value;
       }
     }
 
+    function handleChangeField(key: string, data: any) {
+      if (state.current) {
+        state.current.options[key] = data;
+      }
+    }
+
     return {
       state,
       handleChangeOption,
+      handleChangeField,
+      comp,
     };
   },
 });

@@ -22,6 +22,7 @@ export function getRenderItemClass(type: string, options: BaseOptions) {
   return mergeClass(customClass, {
     [`render-item-${type}`]: true,
     'render-item__hidden': options.hidden,
+    'render-item__hidden-label': options.hiddenLabel,
   });
 }
 
@@ -32,6 +33,10 @@ export function getRenderOptionsToTemplate(options: BaseOptions) {
   };
   if (options.labelWidth) result.labelWidth = options.labelWidth;
   if (options.required) result.required = options.required;
+  if (options.hiddenLabel) {
+    result.label = '';
+    result.labelWidth = 0;
+  }
   return result;
 }
 

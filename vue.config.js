@@ -1,6 +1,7 @@
+const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   lintOnSave: false,
   outputDir: 'docs',
-  publicPath: 'https://xiangxinji.github.io/Aurora/',
+  publicPath: isProd ? 'https://xiangxinji.github.io/Aurora/' : '/',
   productionSourceMap: false,
 };

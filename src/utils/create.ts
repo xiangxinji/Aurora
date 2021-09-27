@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { GeneratorTypes, GeneratorType } from '@/type/index';
-import { BaseOptions, HTMLCodeOptions, SwitchOptions, TextOptions } from '@/type/component';
+import {
+  BaseOptions, HTMLCodeOptions, SwitchOptions, TextOptions,
+} from '@/type/component';
 import { GridLayoutOptions, LayoutOptions } from '@/type/layout';
 
 const commonOptions = (label: string) => ({
@@ -11,7 +13,7 @@ const commonOptions = (label: string) => ({
   customClass: '',
   required: false,
   hiddenLabel: false,
-  labelWidth: ''
+  labelWidth: '',
 });
 
 type DefaultOptions = {
@@ -37,7 +39,7 @@ const defaults: DefaultOptions = {
   },
   'html-code': {
     htmlCode: '<span style="color:red;">111</span>',
-    ...commonOptions('html 块')
+    ...commonOptions('html 块'),
   },
   switch: {
     ...commonOptions('开关'),
@@ -51,15 +53,15 @@ const defaults: DefaultOptions = {
       children: [],
     }],
     layout: true,
-  }
+  },
 };
 
 export function createDefaultOptions(handleKey: GeneratorType) {
   const t = defaults[handleKey];
   if (t) {
     return {
-      ...JSON.parse(JSON.stringify(t)) ,
-      key : Math.random()
+      ...JSON.parse(JSON.stringify(t)),
+      key: Math.random(),
     };
   }
   return null;

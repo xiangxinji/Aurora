@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { PropType, defineProps } from 'vue';
-import { BaseOptions } from '@/components/renderer/types';
+import { BaseOptions } from '@/type/component';
 import {
   getRenderItemStyle,
   getRenderItemClass,
@@ -25,3 +25,6 @@ const props = defineProps({
   },
 });
 </script>
+<style lang="scss" scoped>
+
+</style>

@@ -61,4 +61,10 @@ const formBinds = computed(() => ({
   border:solid 1px #efefef;
   height:calc(100vh - 90px);
 }
+
+::v-deep(.el-form-item ) {
+  padding:10px;
+  box-sizing: border-box;
+}
+
 </style>

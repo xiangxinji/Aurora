@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'preview-item' : true , 'preview-active' : active }"
+  <div :class="{ 'preview-item' : true , 'preview-active' : active  , hidden : conf.options.hidden }"
        @click.stop="handleFocus">
     <div class="active-draggier">
       <el-icon>
