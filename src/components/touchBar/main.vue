@@ -47,7 +47,7 @@ function onClone(item: SettingItem) {
 <style lang="scss" scoped>
 .touch-bar {
   height: 100%;
-  border-right: solid 1px #cccccc;
+  border-right: solid 1px #efefef;
 }
 
 .touch-group {

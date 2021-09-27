@@ -6,6 +6,7 @@
     cursor: pointer;
     user-select: none;
     position: relative;
+    background-color:white;
     &:hover {
       border-color: $primary-color;
     }

@@ -46,7 +46,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .options-bar {
   height: 100%;
-  border-left: solid 1px #ccc;
+  border-left: solid 1px #efefef;
   padding: 2px 12px;
   box-sizing: border-box;
 }
