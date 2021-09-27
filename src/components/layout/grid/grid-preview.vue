@@ -1,11 +1,12 @@
 <template>
   <el-row :class="getRenderItemClass(type , options)"
           :style="getRenderItemStyle(options)">
-    <el-col v-for="i in options.columns.length" :key="i"
+    <el-col v-for="i in options.columns.length" :key="i.key"
             :span="getColumnSpan(options , i)">
       <draggable :list="options.columns[i-1].children"
                  :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}"
-                 :animation="300">
+                 :item-key="item => item.options.key"
+                 :animation="300" >
         <template #item="{ element }">
           <item-entry :element="element" :parent-nodes="options.columns[i-1].children"></item-entry>
         </template>

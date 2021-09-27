@@ -3,10 +3,13 @@ import { reactive } from 'vue';
 import Event from '@/utils/event';
 
 export type FormOptions = {
+  width: string,
   labelPosition: 'right' | 'left' | 'top',
   labelWidth: string,
   labelSuffix: string,
-  size: 'small' | 'mini' | 'middle'
+  size: 'small' | 'mini' | 'middle',
+  customClass: string
+  styleText: string
 }
 
 export default class Store<T extends { id: number | string }> extends Event {
@@ -21,6 +24,9 @@ export default class Store<T extends { id: number | string }> extends Event {
     labelWidth: '100px',
     labelSuffix: ':',
     size: 'small',
+    customClass: '',
+    styleText: '',
+    width: '100%',
   });
 
   public set(item: T | Array<T>, appendIndex ?: number) {

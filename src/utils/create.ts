@@ -1,46 +1,66 @@
 /* eslint-disable import/prefer-default-export */
 import { GeneratorTypes, GeneratorType } from '@/type/index';
+import { BaseOptions, HTMLCodeOptions, SwitchOptions, TextOptions } from '@/type/component';
+import { GridLayoutOptions, LayoutOptions } from '@/type/layout';
 
-const defaults = new Map<GeneratorType, Object>();
-defaults.set(GeneratorTypes['text-input'], {
-  textarea: false,
+const commonOptions = (label: string) => ({
   key: '',
-  label: '文本',
+  label,
+  hidden: false,
   width: '',
-  hidden: false,
-  placeholder: '你好1 ',
-  defaultValue: '',
   customClass: '',
-  required: true,
-});
-const inputOpt = defaults.get(GeneratorTypes['text-input']);
-defaults.set(GeneratorTypes.textarea, {
-  ...inputOpt as object,
-  textarea: true,
-});
-defaults.set(GeneratorTypes['html-code'], {
-  key: '',
-  label: 'html 块',
-  hidden: false,
-  customClass: '',
-  htmlCode: '<span style="color:red;">111</span>',
+  required: false,
+  hiddenLabel: false,
+  labelWidth: ''
 });
 
-defaults.set(GeneratorTypes['grid-block'], {
-  key: '',
-  hidden: false,
-  customClass: '',
-  columns: [{
-    span: 24,
-    children: [],
-  }],
-  layout: true,
-});
+type DefaultOptions = {
+  'text-input': TextOptions,
+  textarea: TextOptions,
+  'html-code': HTMLCodeOptions
+  switch: SwitchOptions,
+  'grid-block': GridLayoutOptions
+}
+
+const defaults: DefaultOptions = {
+  'text-input': {
+    textarea: false,
+    placeholder: '文本框',
+    defaultValue: '',
+    ...commonOptions('文本框'),
+  },
+  textarea: {
+    textarea: true,
+    placeholder: '文本域',
+    defaultValue: '',
+    ...commonOptions('文本域'),
+  },
+  'html-code': {
+    htmlCode: '<span style="color:red;">111</span>',
+    ...commonOptions('html 块')
+  },
+  switch: {
+    ...commonOptions('开关'),
+  },
+  'grid-block': {
+    key: '',
+    hidden: false,
+    customClass: '',
+    columns: [{
+      span: 24,
+      children: [],
+    }],
+    layout: true,
+  }
+};
 
 export function createDefaultOptions(handleKey: GeneratorType) {
-  const t = defaults.get(handleKey);
+  const t = defaults[handleKey];
   if (t) {
-    return JSON.parse(JSON.stringify(t));
+    return {
+      ...JSON.parse(JSON.stringify(t)) ,
+      key : Math.random()
+    };
   }
   return null;
 }

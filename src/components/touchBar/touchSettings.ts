@@ -31,6 +31,11 @@ export default [
         handleKey: 'html-code',
       },
       {
+        label: '开关',
+        icon: '',
+        handleKey: 'switch',
+      },
+      {
         label: '栅格布局',
         icon: '',
         handleKey: 'grid-block',

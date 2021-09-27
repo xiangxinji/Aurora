@@ -35,5 +35,9 @@ export default component;
 
 @import "./styles";
 
-@include preview-item(orange, white)
+@include preview-item(orange, white);
+
+.preview-item{
+  padding:8px !important;
+}
 </style>

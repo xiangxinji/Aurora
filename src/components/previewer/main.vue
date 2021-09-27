@@ -37,7 +37,11 @@ const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;
 // eslint-disable-next-line no-unused-expressions
 RenderStore?.set(props.items);
 const { data } = RenderStore;
-const formBinds = computed(() => RenderStore?.formOptions);
+const formBinds = computed(() => ({
+  ...RenderStore?.formOptions,
+  style: `width:${RenderStore?.formOptions.width};${RenderStore?.formOptions.styleText}`,
+  class: RenderStore?.formOptions.customClass,
+}));
 </script>
 
 <style scoped lang="scss">
@@ -47,5 +51,10 @@ const formBinds = computed(() => RenderStore?.formOptions);
   overflow: hidden;
   padding: 0;
   border-top: solid 10px #409EFF;
+}
+.renderer-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
 }
 </style>

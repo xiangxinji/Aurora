@@ -2,7 +2,7 @@ import {
   reactive, inject, defineEmits,
 } from 'vue';
 import { createUnit, mergeClass } from '@/utils/helpers';
-import { BaseOptions } from '@/components/renderer/types';
+import { BaseOptions } from '@/type/component';
 import Store from '@/components/context/store';
 
 const i = 0;
