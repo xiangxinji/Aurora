@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { PropType, defineProps } from 'vue';
-import { BaseOptions } from '@/components/renderer/types';
+import { BaseOptions } from '@/type/component';
 import itemEntry from '@/components/previewer/items/entry.vue';
 import {
   getRenderItemStyle,
