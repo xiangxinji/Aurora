@@ -6,7 +6,7 @@
           <empty v-if="!state.current"></empty>
           <common-field v-if="!state.current?.options.layout && comp !== 'empty'"
                         :options="state.current.options" @change-field="handleChangeField">
-            <component :is="comp" :options="state.current.options"></component>
+            <component :is="comp" :options="state.current.options" @change-field="handleChangeField"></component>
           </common-field>
         </el-form>
       </el-tab-pane>
