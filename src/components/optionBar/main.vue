@@ -6,7 +6,8 @@
           <empty v-if="!state.current"></empty>
           <common-field v-if="!state.current?.options.layout && comp !== 'empty'"
                         :options="state.current.options" @change-field="handleChangeField">
-            <component :is="comp" :options="state.current.options" @change-field="handleChangeField"></component>
+            <component :is="comp" :options="state.current.options"
+                       @change-field="handleChangeField"></component>
           </common-field>
         </el-form>
       </el-tab-pane>
@@ -26,13 +27,17 @@ import FormOption from './components/form.vue';
 import htmlCode from './components/html-code.vue';
 import empty from './components/base/empty.vue';
 import commonField from './components/base/common-field.vue';
+import textInput from './components/text-input.vue';
+import switchField from './components/switch.vue';
 
 export default defineComponent({
   components: {
     FormOption,
     htmlCode,
     commonField,
+    textInput,
     empty,
+    switch: switchField,
   },
   setup() {
     const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;

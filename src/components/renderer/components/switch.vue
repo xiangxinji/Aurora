@@ -1,6 +1,6 @@
 <template>
   <form-item :options="options" :type="type">
-    <el-switch v-bind="getBindOptions()" :value="true"></el-switch>
+    <el-switch v-bind="getBindOptions()" v-model="options.defaultValue"></el-switch>
   </form-item>
 </template>
 
