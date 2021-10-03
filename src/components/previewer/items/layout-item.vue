@@ -1,5 +1,7 @@
 <template>
-  <div :class="{ 'preview-item' : true , 'preview-active' : active }" @click.stop="handleFocus">
+  <div
+    :class="{ 'preview-item' : true , 'preview-active' : active  , 'hidden' : state.options.hidden }"
+    @click.stop="handleFocus">
     <div class="active-draggier">
       <el-icon>
         <rank/>
@@ -37,7 +39,7 @@ export default component;
 
 @include preview-item(orange, white);
 
-.preview-item{
-  padding:8px !important;
+.preview-item {
+  padding: 8px !important;
 }
 </style>

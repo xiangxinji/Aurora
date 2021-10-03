@@ -7,7 +7,7 @@ export default function useOptionBarRenderer(props: any, emit: Function) {
   const data = ref(null);
   watch(() => props.options, (v) => {
     data.value = JSON.parse(JSON.stringify(v));
-  }, { immediate: true });
+  }, { immediate: true, deep: true });
 
   function set(key: string, data: any) {
     emit('change-field', key, data);

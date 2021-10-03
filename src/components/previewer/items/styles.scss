@@ -47,6 +47,7 @@
 
     > .active-draggier, > .operations {
       display: block;
+      z-index:999;
     }
 
 

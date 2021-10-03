@@ -1,4 +1,4 @@
-import { BaseOptions } from '@/components/renderer/types';
+import { BaseOptions } from './component';
 
 export interface LayoutOptions {
   key: string,

@@ -9,6 +9,11 @@
             <component :is="comp" :options="state.current.options"
                        @change-field="handleChangeField"></component>
           </common-field>
+          <layout-common-field v-if="state.current?.options.layout && comp !== 'empty'"
+                               :options="state.current.options" @change-field="handleChangeField">
+            <component :is="comp" :options="state.current.options"
+                       @change-field="handleChangeField"></component>
+          </layout-common-field>
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="表单属性">
@@ -27,16 +32,20 @@ import FormOption from './components/form.vue';
 import htmlCode from './components/html-code.vue';
 import empty from './components/base/empty.vue';
 import commonField from './components/base/common-field.vue';
+import layoutCommonField from './components/layout/common-field.vue';
 import textInput from './components/text-input.vue';
 import switchField from './components/switch.vue';
+import gridBlock from './components/layout/grid.vue';
 
 export default defineComponent({
   components: {
     FormOption,
     htmlCode,
     commonField,
+    layoutCommonField,
     textInput,
     empty,
+    gridBlock,
     switch: switchField,
   },
   setup() {
