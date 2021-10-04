@@ -23,6 +23,7 @@ import { Rank, DeleteFilled, CopyDocument } from '@element-plus/icons';
 import textInput from '@/components/renderer/components/input.vue';
 import htmlCode from '@/components/renderer/components/html-code.vue';
 import switchField from '@/components/renderer/components/switch.vue';
+import select from '@/components/renderer/components/select.vue';
 import usePreviewItem from '../usePreviewItem';
 
 const component = usePreviewItem('preview-item', {
@@ -31,6 +32,7 @@ const component = usePreviewItem('preview-item', {
   Rank,
   DeleteFilled,
   switch: switchField,
+  select,
   CopyDocument,
 });
 export default component;

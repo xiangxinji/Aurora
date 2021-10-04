@@ -36,15 +36,15 @@ export default [
         handleKey: 'switch',
       },
       {
+        label: '下拉选择',
+        icon: '',
+        handleKey: 'select',
+      },
+      {
         label: '栅格布局',
         icon: '',
         handleKey: 'grid-block',
       },
     ],
-  },
-  {
-    group: 'custom',
-    title: '自定义组件',
-    children: [],
   },
 ] as TouchSettings;

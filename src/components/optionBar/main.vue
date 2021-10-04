@@ -42,6 +42,7 @@ import layoutCommonField from './components/layout/common-field.vue';
 import textInput from './components/text-input.vue';
 import switchField from './components/switch.vue';
 import gridBlock from './components/layout/grid.vue';
+import select from './components/select.vue';
 
 export default defineComponent({
   components: {
@@ -53,6 +54,7 @@ export default defineComponent({
     empty,
     gridBlock,
     switch: switchField,
+    select,
   },
   setup() {
     const RenderStore: Store<any> | undefined = inject('RenderStore') || undefined;

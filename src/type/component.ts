@@ -20,11 +20,19 @@ export interface HTMLCodeOptions extends Omit<BaseOptions, 'required'> {
 }
 
 export interface SwitchOptions extends BaseOptions {
-  activeColor ?: string;
-  inactiveColor ?: string;
-  activeText ?: string;
-  inactiveText ?: string;
-  activeValue ?: boolean | string | number;
-  inactiveValue ?: boolean | string | number;
-  defaultValue ?: boolean | string | number;
+  activeColor: string;
+  inactiveColor: string;
+  activeText: string;
+  inactiveText: string;
+  activeValue: boolean | string | number;
+  inactiveValue: boolean | string | number;
+  defaultValue: boolean | string | number;
+}
+
+export interface SelectOptions extends BaseOptions {
+  labelKey: string;
+  valueKey: string;
+  data: Array<any>;
+  multiple: boolean;
+  defaultValue: string | number | Array<string | number>;
 }

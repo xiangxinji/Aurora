@@ -22,7 +22,7 @@ const [data, context] = useOptionBarRenderer(props, emit);
 const { set } = context;
 
 function onOpenSetting() {
-  const options = props.options as HTMLCodeOptions;
+  const options = props.options as unknown as HTMLCodeOptions;
   if (codeSetting.value) codeSetting.value.open(options.htmlCode);
 }
 

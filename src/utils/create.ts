@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { GeneratorTypes, GeneratorType } from '@/type/index';
+import { GeneratorType } from '@/type/index';
 import {
-  BaseOptions, HTMLCodeOptions, SwitchOptions, TextOptions,
+  HTMLCodeOptions, SwitchOptions, TextOptions, SelectOptions,
 } from '@/type/component';
 import { GridLayoutOptions, LayoutOptions } from '@/type/layout';
 
@@ -20,8 +20,9 @@ type DefaultOptions = {
   'text-input': TextOptions,
   textarea: TextOptions,
   'html-code': HTMLCodeOptions
-  switch: SwitchOptions,
-  'grid-block': GridLayoutOptions
+  switch: Partial<SwitchOptions>,
+  'grid-block': GridLayoutOptions,
+  select: SelectOptions,
 }
 
 const defaults: DefaultOptions = {
@@ -53,6 +54,23 @@ const defaults: DefaultOptions = {
       children: [],
     }],
     layout: true,
+  },
+  select: {
+    labelKey: 'label',
+    valueKey: 'value',
+    multiple: false,
+    data: [
+      {
+        label: '测试数据1',
+        value: 0,
+      },
+      {
+        label: '测试数据2',
+        value: 1,
+      },
+    ],
+    ...commonOptions('下拉选择'),
+    defaultValue: '',
   },
 };
 
