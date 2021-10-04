@@ -72,4 +72,12 @@ export default class Store<T extends { id: number | string }> extends Event {
   public indexOf(id: string | number) {
     return this.data.findIndex((i) => i.id === id);
   }
+
+  public setFormOptions(options: FormOptions) {
+    // eslint-disable-next-line guard-for-in,no-restricted-syntax
+    for (const optionsKey in this.formOptions) {
+      // @ts-ignore
+      this.formOptions[optionsKey] = options[optionsKey];
+    }
+  }
 }

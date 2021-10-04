@@ -2,10 +2,10 @@
   <div class="home">
     <header-bar></header-bar>
     <div class="container">
-      <context>
+      <context ref="context">
         <touch-bar style="width:250px;"></touch-bar>
         <screen style="flex:1;" :configure="mock"></screen>
-        <options-bar style="width:250px;"></options-bar>
+        <options-bar style="width:250px;" @save-generate-json="handleGenerateJson"></options-bar>
       </context>
     </div>
   </div>
@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElMessage } from 'element-plus';
 import touchBar from '@/components/touchBar/main.vue';
 import screen from '@/components/screen/main.vue';
 import optionsBar from '@/components/optionBar/main.vue';
@@ -35,6 +36,16 @@ export default defineComponent({
     return {
       mock,
     };
+  },
+  methods: {
+    handleGenerateJson() {
+      const c = this.$refs.context as InstanceType<typeof context>;
+      c.saveStorage();
+      ElMessage({
+        type: 'success',
+        message: '保存成功',
+      });
+    },
   },
 });
 </script>

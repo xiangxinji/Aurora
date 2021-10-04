@@ -4,7 +4,6 @@
     cursor: pointer;
     user-select: none;
     position: relative;
-    background-color: white;
 
     &:hover {
       border-color: $primary-color;
@@ -40,7 +39,7 @@
     }
   }
   .hidden {
-    background-color: rgba(193, 120, 134, .3)
+    background-color: rgba(193, 120, 134, .3) !important;
   }
   .preview-active {
     border-color: $primary-color;

@@ -19,6 +19,12 @@
       <el-tab-pane label="表单属性">
         <form-option :options="state.formOptions" @change-option="handleChangeOption"></form-option>
       </el-tab-pane>
+
+      <el-tab-pane label="操作">
+        <div style="margin-top:20px;">
+          <el-button @click="$emit('save-generate-json')" style="width:100%;" type="primary" size="mini">  生成配置并保存本地 </el-button>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
