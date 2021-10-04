@@ -1,5 +1,8 @@
 <template>
   <div class="screen">
+    <div class="preview-top-bar">
+      <el-button type="primary" size="mini" @click="$emit('save')"> 保存</el-button>
+    </div>
     <previewer :items="configure"></previewer>
   </div>
 </template>
@@ -23,5 +26,10 @@ const props = defineProps({
   height: 100%;
   box-sizing: border-box;
   padding:10px;
+}
+
+.preview-top-bar{
+  padding-bottom: 8px;
+  text-align: right;
 }
 </style>

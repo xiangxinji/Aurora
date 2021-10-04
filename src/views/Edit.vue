@@ -1,9 +1,10 @@
 <template>
   <div class="home">
     <div class="container">
+
       <context ref="context">
         <touch-bar style="width:250px;"></touch-bar>
-        <screen style="flex:1;" :configure="mock"></screen>
+        <screen style="flex:1;" :configure="mock" @save="handleSaveEditor"></screen>
         <options-bar style="width:250px;" @save-generate-json="handleGenerateJson"></options-bar>
       </context>
     </div>
@@ -42,6 +43,11 @@ export default defineComponent({
         type: 'success',
         message: '保存成功',
       });
+    },
+    handleSaveEditor() {
+      const c = this.$refs.context as InstanceType<typeof context>;
+      const json = c.toJson();
+      console.log(json);
     },
   },
 });

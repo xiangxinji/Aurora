@@ -1,5 +1,6 @@
 <template>
   <div class="renderer-container">
+
     <el-form v-bind="formBinds" style="height:100%;">
       <draggable :list="data" item-key="id" handle=".active-draggier"
                  style="height:100%;overflow-y: scroll;"
