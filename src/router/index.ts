@@ -1,11 +1,22 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
+import Design from '../views/Edit.vue';
+import Projects from '@/views/Project.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'EditFormUnit',
+    component: Projects,
+  },
+  {
+    path: '/design/:id',
+    name: 'Design',
+    component: Design,
+  },
+  {
+    path: '/form-unit/:id',
+    name: 'FormUnit',
+    component: () => import('@/views/FormUnit.vue'),
   },
 ];
 

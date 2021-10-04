@@ -19,6 +19,7 @@ const props = defineProps({
 </script>
 <style lang="scss" scoped>
 .screen {
+  background-color:white;
   height: 100%;
   box-sizing: border-box;
   padding:10px;
