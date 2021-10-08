@@ -1,9 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import { GeneratorType } from '@/type/index';
 import {
   HTMLCodeOptions, SwitchOptions, TextOptions, SelectOptions,
 } from '@/type/component';
-import { GridLayoutOptions, LayoutOptions } from '@/type/layout';
+import { GridLayoutOptions } from '@/type/layout';
 
 const commonOptions = (label: string) => ({
   key: '',

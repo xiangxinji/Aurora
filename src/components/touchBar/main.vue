@@ -6,7 +6,8 @@
         <div class="touch-group-children">
           <draggable :list="group.children" :sort="false"
                      :group="{ name : 'touch' , pull : 'clone' , put : false }" item-key="label"
-                     :clone="onClone" style="display: flex;flex-wrap: wrap;justify-content: space-between;">
+                     :clone="onClone"
+                     style="display: flex;flex-wrap: wrap;justify-content: space-between;">
             <template #item="{ element }">
               <div class="touch-group-item" :data-handler-key="element.handleKey">
                 <div class="icon">
@@ -23,8 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import settings, { SettingItem } from './touchSettings';
+import { ref } from 'vue';
 import { createDefaultOptions } from '@/utils/create';
+import { SettingItem } from '@/type/touch';
+import { touch } from '@/api/system';
 
 let id = 0;
 
@@ -43,11 +46,18 @@ function onClone(item: SettingItem) {
   return false;
 }
 
+const settings = ref([]);
+
+touch()
+  .then((res) => {
+    settings.value = res;
+  });
+
 </script>
 <style lang="scss" scoped>
 .touch-bar {
   height: 100%;
-  background-color:white;
+  background-color: white;
   border-right: solid 1px #efefef;
 }
 
@@ -72,9 +82,10 @@ function onClone(item: SettingItem) {
     cursor: pointer;
     margin-bottom: 10px;
     user-select: none;
-    width:48%;
+    width: 48%;
     white-space: nowrap;
     box-sizing: border-box;
+
     .label {
       margin-left: 8px;
     }

@@ -1,16 +1,9 @@
-export type SettingItem = {
-  label: string,
-  icon: string
-  handleKey: string
-}
-export type GroupItem = {
-  group: string
-  title: string
-  children: Array<SettingItem>
-}
-export type TouchSettings = Array<GroupItem>
+import Mock from 'mockjs';
+import { builder } from '../utils';
 
-export default [
+const prefix = 'system';
+
+const touchSettings = [
   {
     group: 'base',
     title: '基础组件',
@@ -47,4 +40,6 @@ export default [
       },
     ],
   },
-] as TouchSettings;
+];
+
+Mock.mock(`/${prefix}/touch`, 'get', builder(touchSettings, '请求成功'));

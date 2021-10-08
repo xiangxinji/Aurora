@@ -1,6 +1,5 @@
 <template>
   <div class="renderer-container">
-
     <el-form v-bind="formBinds" style="height:100%;">
       <draggable :list="data" item-key="id" handle=".active-draggier"
                  style="height:100%;overflow-y: scroll;"
@@ -60,7 +59,7 @@ const formBinds = computed(() => ({
   justify-content: center;
   padding-top: 8px;
   border:solid 1px #efefef;
-  height:calc(100vh - 90px);
+  height:calc(100vh - 120px);
 }
 
 ::v-deep(.el-form-item ) {

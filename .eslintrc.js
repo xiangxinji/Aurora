@@ -19,7 +19,11 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-shadow': 'off',
     'max-len' : 'off',
-    '@typescript-eslint/ban-ts-comment' : 'off'
+    '@typescript-eslint/ban-ts-comment' : 'off',
+    'no-underscore-dangle' : 'off',
+    'import/extensions' : 'off',
+    'import/no-unresolved' : 'off',
+    'import/prefer-default-export' : 'off'
   },
   overrides: [
     {
