@@ -12,6 +12,6 @@ import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
 import { TextOptions } from '@/type/component';
 
-const props = defineProps(CommonProps);
+const props = defineProps(CommonProps<TextOptions>());
 
 </script>

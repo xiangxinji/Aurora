@@ -14,7 +14,7 @@
         <delete-filled/>
       </el-icon>
     </div>
-    <component :is="state.type" :type="state.type" :options="state.options"></component>
+    <component :is="state.type" :type="state.type" :options="state.options" v-bind="$attrs"></component>
   </div>
 </template>
 

@@ -7,9 +7,9 @@
                  :group="{ name :'layout' , put : ['touch' , 'preview' , 'layout']}"
                  :item-key="item => item.options.key"
                  style="height:100%;"
-                 :animation="300" >
+                 :animation="300">
         <template #item="{ element }">
-          <item-entry :element="element" :parent-nodes="options.columns[i-1].children"></item-entry>
+          <item-entry :element="element" :parent-nodes="options.columns[i-1].children" :mode="mode"></item-entry>
         </template>
       </draggable>
     </el-col>
@@ -22,18 +22,12 @@ import { BaseOptions } from '@/type/component';
 import itemEntry from '@/components/previewer/items/entry.vue';
 import {
   getRenderItemStyle,
-  getRenderItemClass,
+  getRenderItemClass, CommonProps,
 } from '@/components/renderer/useRenderItem';
+import { GridLayoutOptions } from '@/type/layout';
 
-const props = defineProps({
-  options: {
-    type: Object as PropType<BaseOptions>,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps(CommonProps<GridLayoutOptions>());
+console.log(props.mode);
 
 function getColumnSpan(options: any, number: number) {
   if (options.columns[number - 1] && options.columns[number - 1].span) return options.columns[number - 1].span;

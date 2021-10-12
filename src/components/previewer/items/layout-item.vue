@@ -16,7 +16,7 @@
       </el-icon>
     </div>
     <component v-if="state" :is="state.type" :type="state.type"
-               :options="state.options"></component>
+               :options="state.options" v-bind="$attrs"></component>
   </div>
 </template>
 

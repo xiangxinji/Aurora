@@ -5,7 +5,7 @@
                  style="height:100%;overflow-y: scroll;"
                  :group="{ name :'preview', put : ['touch' , 'layout']}" :animation="300">
         <template #item="{ element }">
-          <item-entry :element="element"></item-entry>
+          <item-entry :element="element" mode="previewer"></item-entry>
         </template>
       </draggable>
     </el-form>
@@ -58,12 +58,12 @@ const formBinds = computed(() => ({
   display: flex;
   justify-content: center;
   padding-top: 8px;
-  border:solid 1px #efefef;
-  height:calc(100vh - 120px);
+  border: solid 1px #efefef;
+  height: calc(100vh - 120px);
 }
 
 ::v-deep(.el-form-item ) {
-  padding:10px;
+  padding: 10px;
   box-sizing: border-box;
 }
 

@@ -12,18 +12,10 @@ import { BaseOptions } from '@/type/component';
 import {
   getRenderItemStyle,
   getRenderItemClass,
-  getRenderOptionsToTemplate,
+  getRenderOptionsToTemplate, CommonProps,
 } from '../useRenderItem';
 
-const props = defineProps({
-  options: {
-    type: Object as PropType<BaseOptions>,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps(CommonProps<BaseOptions>());
 </script>
 <style lang="scss" scoped>
 

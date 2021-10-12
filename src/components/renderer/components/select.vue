@@ -10,9 +10,9 @@
 import { defineProps } from 'vue';
 import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
-import { SwitchOptions } from '@/type/component';
+import { SelectOptions, SwitchOptions } from '@/type/component';
 
-const props = defineProps(CommonProps);
+const props = defineProps(CommonProps<SelectOptions>());
 </script>
 <style lang="scss" scoped>
 

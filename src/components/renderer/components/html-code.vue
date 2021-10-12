@@ -8,8 +8,8 @@
 import { defineProps, defineEmits } from 'vue';
 import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
-import { HTMLCodeOptions } from '@/components/renderer/types';
+import { HTMLCodeOptions } from '@/type/component';
 
-const props = defineProps(CommonProps);
+const props = defineProps(CommonProps<HTMLCodeOptions>());
 
 </script>

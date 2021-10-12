@@ -10,18 +10,17 @@ import { CommonProps } from '../useRenderItem';
 import formItem from './form-item.vue';
 import { SwitchOptions } from '@/type/component';
 
-const props = defineProps(CommonProps);
-const op = props.options as SwitchOptions;
+const props = defineProps(CommonProps<SwitchOptions>());
 
 function getBindOptions() {
   return {
-    activeColor: op.activeColor,
-    inactiveColor: op.inactiveColor,
-    activeText: op.activeText,
-    inactiveText: op.inactiveText,
-    activeValue: op.activeValue,
-    inactiveValue: op.inactiveValue,
-    defaultValue: op.defaultValue,
+    activeColor: props.options?.activeColor,
+    inactiveColor: props.options?.inactiveColor,
+    activeText: props.options?.activeText,
+    inactiveText: props.options?.inactiveText,
+    activeValue: props.options?.activeValue,
+    inactiveValue: props.options?.inactiveValue,
+    defaultValue: props.options?.defaultValue,
   };
 }
 

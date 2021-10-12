@@ -1,19 +1,28 @@
 import {
-  reactive, inject, defineEmits,
+  reactive, inject, defineEmits, PropType,
 } from 'vue';
 import { createUnit, mergeClass } from '@/utils/helpers';
 import { BaseOptions } from '@/type/component';
 import Store from '@/components/context/store';
 
 const i = 0;
-export const CommonProps = {
+
+type Modes = ['previewer', 'renderer'];
+
+type Flatten<T> = T extends Array<infer U> ? U : never
+
+export const CommonProps = <T>() => ({
   options: {
-    type: Object,
+    type: Object as PropType<T>,
+    required: true,
   },
   onInitState: {
     type: Function,
   },
-};
+  mode: {
+    type: String as PropType<Flatten<Modes>>,
+  },
+});
 
 const pxUnit = createUnit('px');
 
