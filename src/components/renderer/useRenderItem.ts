@@ -12,6 +12,10 @@ type Modes = ['previewer', 'renderer'];
 type Flatten<T> = T extends Array<infer U> ? U : never
 
 export const CommonProps = <T>() => ({
+  type: {
+    type: String,
+    required: true,
+  },
   options: {
     type: Object as PropType<T>,
     required: true,
@@ -28,7 +32,9 @@ const pxUnit = createUnit('px');
 
 export function getRenderItemClass(type: string, options: BaseOptions) {
   const { customClass } = options;
-  return mergeClass(customClass, {
+  console.log('---');
+  console.log(type);
+  return mergeClass(customClass || '', {
     [`render-item-${type}`]: true,
     'render-item__hidden': options.hidden,
     'render-item__hidden-label': options.hiddenLabel,

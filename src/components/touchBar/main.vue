@@ -40,7 +40,6 @@ function onClone(item: SettingItem) {
       id: id++,
       options,
     };
-    console.log(result);
     return result;
   }
   return false;

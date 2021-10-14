@@ -19,10 +19,10 @@
       <el-tab-pane label="表单属性">
         <form-option :options="state.formOptions" @change-option="handleChangeOption"></form-option>
       </el-tab-pane>
-
       <el-tab-pane label="操作">
-        <div style="margin-top:20px;">
-          <el-button @click="$emit('save-generate-json')" style="width:100%;" type="primary" size="mini">  生成配置并保存本地 </el-button>
+        <div>
+          <el-button @click="$emit('preview-render')" style="width:100%;text-align:right;" type="text" size="mini">  预览 </el-button>
+          <el-button @click="$emit('save-generate-json')" style="width:100%;margin-top: 10px;" type="primary" size="mini">  生成配置并保存本地 </el-button>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -33,7 +33,8 @@
 import {
   inject, reactive, defineComponent, computed,
 } from 'vue';
-import Store, { FormOptions } from '@/components/context/store';
+import Store from '@/components/context/store';
+import { FormOptions } from '@/type';
 import FormOption from './components/form.vue';
 import htmlCode from './components/html-code.vue';
 import empty from './components/base/empty.vue';
@@ -98,5 +99,6 @@ export default defineComponent({
   border-left: solid 1px #efefef;
   padding: 2px 12px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 </style>

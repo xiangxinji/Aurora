@@ -1,16 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { reactive } from 'vue';
 import Event from '@/utils/event';
-
-export type FormOptions = {
-  width: string,
-  labelPosition: 'right' | 'left' | 'top',
-  labelWidth: string,
-  labelSuffix: string,
-  size: 'small' | 'mini' | 'middle',
-  customClass: string
-  styleText: string
-}
+import { FormOptions } from '@/type';
 
 export default class Store<T extends { id: number | string }> extends Event {
   public data: Array<T> = reactive([]);

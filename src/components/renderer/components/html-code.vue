@@ -1,5 +1,5 @@
 <template>
-  <form-item :options="options" :type="options.type">
+  <form-item :options="options" :type="type">
     <div v-html="options.htmlCode"></div>
   </form-item>
 </template>

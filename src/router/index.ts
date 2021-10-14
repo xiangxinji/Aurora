@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import Design from '../views/Edit.vue';
-import Projects from '@/views/Project.vue';
+import Design from '../views/edit.vue';
+import Projects from '@/views/project.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,7 +16,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/form-unit/:id',
     name: 'FormUnit',
-    component: () => import('@/views/FormUnit.vue'),
+    component: () => import('@/views/form-unit.vue'),
+  },
+  {
+    path: '/preview',
+    name: 'PreviewRender',
+    component: () => import('@/views/preview.vue'),
   },
 ];
 

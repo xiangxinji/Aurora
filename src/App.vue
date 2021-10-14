@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #ebeef5;">
+  <div>
     <header-bar></header-bar>
     <router-view/>
   </div>
